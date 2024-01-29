@@ -4,16 +4,21 @@ import { Bill, PayBill, Reset, Service } from "./components";
 const options = [
   {
     id: 1,
-    title: "It was good(10%)",
+    title: "Dissatisfied(0%)",
     value: 10,
   },
   {
     id: 2,
-    title: "Very enjoyable(15%)",
-    value: 15,
+    title: "It was okay(5%)",
+    value: 10,
   },
   {
     id: 3,
+    title: "It was good(10%)",
+    value: 15,
+  },
+  {
+    id: 4,
     title: "Absolutely amazing!(20%)",
     value: 20,
   },
@@ -21,8 +26,8 @@ const options = [
 
 function App() {
   const [bill, setBill] = useState(0);
-  const [myService, setMyService] = useState(10);
-  const [friendService, setFriendService] = useState(10);
+  const [myService, setMyService] = useState(0);
+  const [friendService, setFriendService] = useState(0);
 
   const handleMyServiceChange = (value) => {
     setMyService(value);
