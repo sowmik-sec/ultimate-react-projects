@@ -64,10 +64,10 @@ const KEY = "ec791f8f";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("");
-
+  const [query, setQuery] = useState("forrest gump");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
   const tempQuery = "catch me if you can";
 
   /*
@@ -88,27 +88,36 @@ export default function App() {
   console.log("During render");
   */
 
-  useEffect(function () {
-    async function fetchMovie() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`
-        );
-        if (!res.ok)
-          throw new Error("Something went wrong with fetching movies");
-        const data = await res.json();
-        if (data.Response === "False") throw new Error("Movie not found");
-        setMovies(data.Search);
-        setIsLoading(false);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
+  useEffect(
+    function () {
+      async function fetchMovie() {
+        try {
+          setIsLoading(true);
+          setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          );
+          if (!res.ok)
+            throw new Error("Something went wrong with fetching movies");
+          const data = await res.json();
+          if (data.Response === "False") throw new Error("Movie not found");
+          setMovies(data.Search);
+          setIsLoading(false);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-    fetchMovie();
-  }, []);
+      if (!query.length) {
+        setMovies([]);
+        setError("");
+        return;
+      }
+      fetchMovie();
+    },
+    [query]
+  );
 
   return (
     <>
