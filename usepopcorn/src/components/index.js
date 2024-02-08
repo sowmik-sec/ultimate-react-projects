@@ -10,6 +10,7 @@ import Star from "./Star/Star";
 import WatchedMovie from "./WatchedMovie/WatchedMovie";
 import WatchedMoviesList from "./WatchedMoviesList/WatchedMoviesList";
 import WatchedSummary from "./WatchedSummary/WatchedSummary";
+import Loader from "./Loader/Loader";
 
 export {
   Box,
@@ -24,4 +25,5 @@ export {
   WatchedMovie,
   WatchedMoviesList,
   WatchedSummary,
+  Loader,
 };
