@@ -13,7 +13,6 @@ import WatchedSummary from "./WatchedSummary/WatchedSummary";
 import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import MovieDetails from "./MovieDetiles/MovieDetails";
-import Star from "./Star/Star";
 import StarRating from "../StarRating";
 
 export {
@@ -32,6 +31,5 @@ export {
   Loader,
   ErrorMessage,
   MovieDetails,
-  Star,
   StarRating,
 };
