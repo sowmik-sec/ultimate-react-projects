@@ -11,6 +11,7 @@ import WatchedMovie from "./WatchedMovie/WatchedMovie";
 import WatchedMoviesList from "./WatchedMoviesList/WatchedMoviesList";
 import WatchedSummary from "./WatchedSummary/WatchedSummary";
 import Loader from "./Loader/Loader";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
 
 export {
   Box,
@@ -26,4 +27,5 @@ export {
   WatchedMoviesList,
   WatchedSummary,
   Loader,
+  ErrorMessage,
 };
