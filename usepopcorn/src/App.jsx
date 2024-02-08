@@ -57,12 +57,14 @@ const tempWatchedData = [
   },
 ];
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+const KEY = "ec791f8f";
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=forrest&gump`)
+    .then((res) => res.json())
+    .then((data) => console.log(data.Search));
   return (
     <>
       <Navbar>
@@ -70,7 +72,7 @@ export default function App() {
         <NumResults movies={movies} />
       </Navbar>
       <Main>
-        {/* <Box element={<MovieList movies={movies} />} />
+        <Box element={<MovieList movies={movies} />} />
         <Box
           element={
             <>
@@ -78,7 +80,7 @@ export default function App() {
               <WatchedMoviesList watched={watched} />
             </>
           }
-        /> */}
+        />
         <Box>
           <MovieList movies={movies} />
         </Box>
