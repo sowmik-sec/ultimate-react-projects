@@ -64,16 +64,36 @@ const KEY = "ec791f8f";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [query, setQuery] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const query = "catch me if you can";
+  const tempQuery = "catch me if you can";
+
+  /*
+  useEffect(function () {
+    console.log("A");
+  }, []);
+
+  useEffect(function () {
+    console.log("After every render");
+  });
+
+  useEffect(
+    function () {
+      console.log("D");
+    },
+    [query]
+  );
+  console.log("During render");
+  */
 
   useEffect(function () {
     async function fetchMovie() {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`
         );
         if (!res.ok)
           throw new Error("Something went wrong with fetching movies");
@@ -82,7 +102,6 @@ export default function App() {
         setMovies(data.Search);
         setIsLoading(false);
       } catch (err) {
-        console.error(err.message);
         setError(err.message);
       } finally {
         setIsLoading(false);
@@ -94,7 +113,7 @@ export default function App() {
   return (
     <>
       <Navbar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </Navbar>
       <Main>
