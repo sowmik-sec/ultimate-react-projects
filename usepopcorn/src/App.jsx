@@ -4,6 +4,7 @@ import {
   ErrorMessage,
   Loader,
   Main,
+  MovieDetails,
   MovieList,
   Navbar,
   NumResults,
@@ -67,8 +68,7 @@ export default function App() {
   const [query, setQuery] = useState("forrest gump");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const tempQuery = "catch me if you can";
+  const [selectedId, setSelectedId] = useState(null);
 
   /*
   useEffect(function () {
@@ -87,6 +87,13 @@ export default function App() {
   );
   console.log("During render");
   */
+  const handleSelectMovie = (id) => {
+    setSelectedId((selectedId) => (id === selectedId ? null : id));
+  };
+
+  const handleCloseMovie = () => {
+    setSelectedId(null);
+  };
 
   useEffect(
     function () {
@@ -129,13 +136,25 @@ export default function App() {
         <Box>
           {/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
           {isLoading && <Loader />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          )}
           {error && <ErrorMessage message={error} />}
         </Box>
 
         <Box>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
+          {selectedId ? (
+            <MovieDetails
+              selectedId={selectedId}
+              onCloseMovie={handleCloseMovie}
+            />
+          ) : (
+            <>
+              {" "}
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList watched={watched} />
+            </>
+          )}
         </Box>
       </Main>
     </>
