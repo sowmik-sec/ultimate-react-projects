@@ -13,6 +13,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+
   const {
     Title: title,
     Year: year,
@@ -25,6 +26,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Director: director,
     Genre: genre,
   } = movie;
+
+  // if (imdbRating > 8) [isTop, setIsTop] = useState(true);
 
   const handleAdd = () => {
     const newWatchedMovie = {
