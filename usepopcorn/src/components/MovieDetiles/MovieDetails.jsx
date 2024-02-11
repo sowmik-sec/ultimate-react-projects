@@ -27,18 +27,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
-  // if (imdbRating > 8) [isTop, setIsTop] = useState(true);
-  // const [isTop, setIsTop] = useState(imdbRating > 8);
-  // console.log(isTop);
-  // useEffect(() => {
-  //   setIsTop(imdbRating > 8);
-  // }, [imdbRating]);
-
-  // const isTop = imdbRating > 8;
-  // console.log(isTop);
-
-  // const [averageRating, setAverageRating] = useState(0);
-
   const handleAdd = () => {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -51,8 +39,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
-    // setAverageRating(Number(imdbRating));
-    // setAverageRating((averageRating) => (averageRating + userRating) / 2);
   };
 
   useEffect(
@@ -116,7 +102,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
               </p>
             </div>
           </header>
-          {/* <p>{averageRating}</p> */}
           <section>
             {!isWatched ? (
               <div className="rating">
