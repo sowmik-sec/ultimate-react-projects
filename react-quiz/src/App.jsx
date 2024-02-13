@@ -5,6 +5,7 @@ import {
   Loader,
   Main,
   NextButton,
+  Progress,
   Question,
   StartScreen,
 } from "./components";
@@ -37,6 +38,7 @@ function reducer(state, action) {
         status: "active",
       };
     case "newAnswer":
+      // eslint-disable-next-line no-case-declarations
       const question = state.questions.at(state.index);
       return {
         ...state,
@@ -54,12 +56,16 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [{ questions, status, index, answer }, dispatch] = useReducer(
+  const [{ questions, status, index, answer, points }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
   const numQuestions = questions.length;
+  const maxPossiblePoints = questions.reduce(
+    (prev, cur) => prev + cur.points,
+    0
+  );
 
   useEffect(() => {
     fetch(`http://localhost:8000/questions`)
@@ -78,6 +84,13 @@ function App() {
         )}
         {status === "active" && (
           <>
+            <Progress
+              index={index}
+              numQuestions={numQuestions}
+              points={points}
+              maxPossiblePoints={maxPossiblePoints}
+              answer={answer}
+            />
             <Question
               question={questions[index]}
               dispatch={dispatch}
