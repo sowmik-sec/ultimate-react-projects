@@ -5,5 +5,15 @@ import Loader from "./Loader/Loader";
 import Main from "./Main/Main";
 import StartScreen from "./StartScreen/StartScreen";
 import Question from "./Question/Question";
+import NextButton from "./NextButton/NextButton";
 
-export { DateCounter, Error, Header, Loader, Main, Question, StartScreen };
+export {
+  DateCounter,
+  Error,
+  Header,
+  Loader,
+  Main,
+  NextButton,
+  Question,
+  StartScreen,
+};
