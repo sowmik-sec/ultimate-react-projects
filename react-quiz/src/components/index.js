@@ -6,6 +6,7 @@ import Main from "./Main/Main";
 import StartScreen from "./StartScreen/StartScreen";
 import Question from "./Question/Question";
 import NextButton from "./NextButton/NextButton";
+import Progress from "./Progress/Progress";
 
 export {
   DateCounter,
@@ -14,6 +15,7 @@ export {
   Loader,
   Main,
   NextButton,
+  Progress,
   Question,
   StartScreen,
 };
