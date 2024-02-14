@@ -7,10 +7,12 @@ import StartScreen from "./StartScreen/StartScreen";
 import Question from "./Question/Question";
 import NextButton from "./NextButton/NextButton";
 import Progress from "./Progress/Progress";
+import FinishScreen from "./FinishScreen/FinishScreen";
 
 export {
   DateCounter,
   Error,
+  FinishScreen,
   Header,
   Loader,
   Main,
