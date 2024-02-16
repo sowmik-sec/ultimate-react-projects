@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import {
   Error,
   FinishScreen,
+  Footer,
   Header,
   Loader,
   Main,
@@ -9,6 +10,7 @@ import {
   Progress,
   Question,
   StartScreen,
+  Timer,
 } from "./components";
 
 const initialState = {
@@ -103,12 +105,15 @@ function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextButton
-              dispatch={dispatch}
-              answer={answer}
-              index={index}
-              numQuestions={numQuestions}
-            />
+            <Footer>
+              <Timer />
+              <NextButton
+                dispatch={dispatch}
+                answer={answer}
+                index={index}
+                numQuestions={numQuestions}
+              />
+            </Footer>
           </>
         )}
         {status === "finished" && (
