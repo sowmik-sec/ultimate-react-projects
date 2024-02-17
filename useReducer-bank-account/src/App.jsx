@@ -24,10 +24,13 @@ const initialState = {
   balance: 0,
   loan: 0,
   isActive: false,
+  isLoaned: false,
 };
 
 const DEPOSIT_AMOUNT = 150;
+const INITIAL_BALANCE = 500;
 const WITHDRAW_AMOUNT = 50;
+const LOAN_REQUEST = 5000;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -35,6 +38,7 @@ function reducer(state, action) {
       return {
         ...state,
         isActive: true,
+        balance: INITIAL_BALANCE,
       };
     case "deposit":
       return {
@@ -45,9 +49,16 @@ function reducer(state, action) {
       return {
         ...state,
         balance:
-          state.balance >= WITHDRAW_AMOUNT
+          state.balance - state.loan >= WITHDRAW_AMOUNT
             ? state.balance - WITHDRAW_AMOUNT
             : state.balance,
+      };
+    case "loan":
+      return {
+        ...state,
+        balance: !state.isLoaned ? state.balance + LOAN_REQUEST : state.balance,
+        loan: !state.isLoaned ? state.loan + LOAN_REQUEST : state.loan,
+        isLoaned: true,
       };
     default:
       throw new Error("Action unknown");
@@ -98,7 +109,12 @@ export default function App() {
           </button>
         </p>
         <p>
-          <button onClick={() => {}} disabled={!isActive}>
+          <button
+            onClick={() => {
+              dispatch({ type: "loan" });
+            }}
+            disabled={!isActive}
+          >
             Request a loan of 5000
           </button>
         </p>
