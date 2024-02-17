@@ -72,12 +72,8 @@ function reducer(state, action) {
         isLoaned: false,
       };
     case "close-account":
-      return {
-        balance: state.balance > 0 ? state.balance : 0,
-        loan: state.loan > 0 ? state.loan : 0,
-        isActive: state.balance > 0 || state.loan > 0 ? true : false,
-        isLoaned: state.balance > 0 || state.loan > 0 ? state.isLoaned : false,
-      };
+      if (state.loan !== 0 || state.balance !== 0) return state;
+      return initialState;
     default:
       throw new Error("Action unknown");
   }
