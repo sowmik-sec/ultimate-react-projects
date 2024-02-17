@@ -33,6 +33,7 @@ const WITHDRAW_AMOUNT = 50;
 const LOAN_REQUEST = 5000;
 
 function reducer(state, action) {
+  if (!state.isActive && action.type !== "open") return state;
   switch (action.type) {
     case "open":
       return {
