@@ -27,6 +27,7 @@ const initialState = {
 };
 
 const DEPOSIT_AMOUNT = 150;
+const WITHDRAW_AMOUNT = 50;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +40,14 @@ function reducer(state, action) {
       return {
         ...state,
         balance: state.balance + DEPOSIT_AMOUNT,
+      };
+    case "withdraw":
+      return {
+        ...state,
+        balance:
+          state.balance >= WITHDRAW_AMOUNT
+            ? state.balance - WITHDRAW_AMOUNT
+            : state.balance,
       };
     default:
       throw new Error("Action unknown");
@@ -79,7 +88,12 @@ export default function App() {
           </button>
         </p>
         <p>
-          <button onClick={() => {}} disabled={!isActive}>
+          <button
+            onClick={() => {
+              dispatch({ type: "withdraw" });
+            }}
+            disabled={!isActive}
+          >
             Withdraw 50
           </button>
         </p>
