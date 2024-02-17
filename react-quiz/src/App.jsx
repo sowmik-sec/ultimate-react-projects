@@ -136,6 +136,7 @@ function App() {
         )}
         {status === "finished" && (
           <FinishScreen
+            dispatch={dispatch}
             points={points}
             highscore={highscore}
             maxPossiblePoints={maxPossiblePoints}

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function FinishScreen({ points, highscore, maxPossiblePoints }) {
+function FinishScreen({ dispatch, points, highscore, maxPossiblePoints }) {
   const percentage = (points / maxPossiblePoints) * 100;
   let emoji;
   if (percentage === 100) emoji = "🥇";
@@ -15,6 +15,12 @@ function FinishScreen({ points, highscore, maxPossiblePoints }) {
         {maxPossiblePoints} ({Math.ceil(percentage)}%)
       </p>
       <p className="highscore">(Highscore: {highscore})</p>
+      <button
+        className="btn btn-ui"
+        onClick={() => dispatch({ type: "restart" })}
+      >
+        Restart Quiz
+      </button>
     </>
   );
 }
