@@ -35,42 +35,6 @@
         "lng": 13.376933665713324
       },
       "id": "98443197"
-    },
-    {
-      "id": "9c76",
-      "cityName": "Bhurungamari",
-      "country": "Bangladesh",
-      "emoji": "🇧🇩",
-      "date": "2024-02-22T10:01:13.331Z",
-      "notes": "",
-      "position": {
-        "lat": "26.107970600701737",
-        "lng": "89.68894958496095"
-      }
-    },
-    {
-      "id": "a0ea",
-      "cityName": "Nageswari",
-      "country": "Bangladesh",
-      "emoji": "🇧🇩",
-      "date": "2024-02-22T10:05:01.756Z",
-      "notes": "",
-      "position": {
-        "lat": "25.976564410019797",
-        "lng": "89.747314453125"
-      }
-    },
-    {
-      "id": "402e",
-      "cityName": "Rangpur",
-      "country": "Bangladesh",
-      "emoji": "🇧🇩",
-      "date": "2024-02-22T10:08:34.920Z",
-      "notes": "",
-      "position": {
-        "lat": "25.78628999289964",
-        "lng": "89.29138183593751"
-      }
     }
   ]
 }
