@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const initialState = {
   user: null,
@@ -32,7 +32,7 @@ const FAKE_USER = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
@@ -46,7 +46,7 @@ function AuthProvider({ children }) {
     }
   }
   function logout() {
-    dispatch({ type: logout });
+    dispatch({ type: "logout" });
   }
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
@@ -55,10 +55,4 @@ function AuthProvider({ children }) {
   );
 }
 
-function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined)
-    throw new Error("AuthContext was used outside AuthProvider");
-}
-
-export { useAuth, AuthProvider };
+export { AuthProvider };
