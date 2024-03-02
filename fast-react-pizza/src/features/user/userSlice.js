@@ -24,7 +24,7 @@ async function fetchAddress() {
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  username: "Ahsan Habib Sowmik",
+  username: "",
 };
 
 const userSlice = createSlice({
