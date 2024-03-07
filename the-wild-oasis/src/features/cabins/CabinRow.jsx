@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {formatCurrency} from "../../utils/helpers.js";
 
 const TableRow = styled.div`
   display: grid;
@@ -21,6 +22,7 @@ const Img = styled.img`
   transform: scale(1.5) translateX(-7px);
 `;
 
+// eslint-disable-next-line no-unused-vars
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
@@ -28,13 +30,34 @@ const Cabin = styled.div`
   font-family: "Sono";
 `;
 
+// eslint-disable-next-line no-unused-vars
 const Price = styled.div`
   font-family: "Sono";
   font-weight: 600;
 `;
 
+// eslint-disable-next-line no-unused-vars
 const Discount = styled.div`
   font-family: "Sono";
   font-weight: 500;
   color: var(--color-green-700);
 `;
+
+
+// eslint-disable-next-line react/prop-types
+const CabinRow = ({cabin}) => {
+    // eslint-disable-next-line react/prop-types,no-unused-vars
+    const {name, maxCapacity, regularPrice, discount, image} = cabin;
+    return (
+        <TableRow role={'row'}>
+            <Img src={image}/>
+            <Cabin>{name}</Cabin>
+            <div>Fits up to {maxCapacity} guests</div>
+            <Price>{formatCurrency(regularPrice)}</Price>
+            <Discount>{formatCurrency(discount)}</Discount>
+            <button>Delete</button>
+        </TableRow>
+    );
+};
+
+export default CabinRow;
