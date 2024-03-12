@@ -30,7 +30,7 @@ export default function FormSplitBill({ selectedFriend, onSplitBill }) {
         value={paidByUser}
         onChange={(e) =>
           setPaidByUser(
-            Number(e.target.value) > bill ? paidByUser : Number(e.target.value)
+            Number(e.target.value) > bill ? paidByUser : Number(e.target.value),
           )
         }
       />

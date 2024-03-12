@@ -13,7 +13,7 @@ const PostContext = createContext();
 
 function PostProvider({ children }) {
   const [posts, setPosts] = useState(() =>
-    Array.from({ length: 30 }, () => createRandomPost())
+    Array.from({ length: 30 }, () => createRandomPost()),
   );
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -23,7 +23,7 @@ function PostProvider({ children }) {
       ? posts.filter((post) =>
           `${post.title} ${post.body}`
             .toLowerCase()
-            .includes(searchQuery.toLowerCase())
+            .includes(searchQuery.toLowerCase()),
         )
       : posts;
 

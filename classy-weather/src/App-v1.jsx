@@ -49,7 +49,7 @@ class App extends React.Component {
       this.setState({ isLoading: true });
       // 1) Getting location (geocoding)
       const geoRes = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${this.state.location}`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${this.state.location}`,
       );
       const geoData = await geoRes.json();
       console.log(geoData);
@@ -64,7 +64,7 @@ class App extends React.Component {
 
       // 2) Getting actual weather
       const weatherRes = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`,
       );
       const weatherData = await weatherRes.json();
       this.setState({ weather: weatherData.daily });
